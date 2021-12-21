@@ -49,7 +49,7 @@ const Sidebar = () => {
 
         <IconsContainer>
           <IconButton>
-            <ChatIcon />
+            <ChatIcon onClick={createChat} />
           </IconButton>
           <IconButton>
             <MoreVertIcon />
@@ -62,7 +62,7 @@ const Sidebar = () => {
         <SearchInput placeholder="Search in chats" />
       </Search>
 
-      <SidebarButton onClick={createChat}>Start new chat</SidebarButton>
+      {/* <SidebarButton onClick={createChat}>Start new chat</SidebarButton> */}
 
       {/* //TODO List of chats */}
       {chatsSnapshot?.docs.map((chat) => (
@@ -97,13 +97,13 @@ const Search = styled.div`
   border-radius: 2px;
 `;
 
-const SidebarButton = styled(Button)`
-  width: 100%;
-  &&& {
-    border-top: 1px solid whitesmoke;
-    border-bottom: 1px solid whitesmoke;
-  }
-`;
+// const SidebarButton = styled(Button)`
+//   width: 100%;
+//   &&& {
+//     border-top: 1px solid whitesmoke;
+//     border-bottom: 1px solid whitesmoke;
+//   }
+// `;
 
 const SearchInput = styled.input`
   outline-width: 0;

@@ -10,8 +10,11 @@ const Message = ({ user, message }) => {
 
   return (
     <Container>
-      <TypeOfMessage>{message.message}
-      <Timestamp>{message.timestamp ? moment(message.timestamp).format('LT') : '...'}</Timestamp>
+      <TypeOfMessage>
+        {message.message}
+        <Timestamp>
+          {message.timestamp ? moment(message.timestamp).format("LT") : "..."}
+        </Timestamp>
       </TypeOfMessage>
     </Container>
   );
@@ -35,11 +38,33 @@ const MessageElement = styled.p`
 const Sender = styled(MessageElement)`
   margin-left: auto;
   background-color: #dcf8c6;
+
+  :after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 100%;
+    border-top-color: inherit;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #dcf8c6;
+  }
 `;
 
 const Reciever = styled(MessageElement)`
   background-color: whitesmoke;
   text-align: left;
+
+  :after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 100%;
+    border-top-color: inherit;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid whitesmoke;
+  }
 `;
 
 const Timestamp = styled.span`
