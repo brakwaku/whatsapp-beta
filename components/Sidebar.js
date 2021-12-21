@@ -23,7 +23,11 @@ const Sidebar = () => {
 
     if (!input) return null;
 
-    if (EmailValidator.validate(input) && !chatAlreadyExists(input) && input !== user.email) {
+    if (
+      EmailValidator.validate(input) &&
+      !chatAlreadyExists(input) &&
+      input !== user.email
+    ) {
       //TODO Add chat into DB 'chats' collection if it doesn't exist already and is valid
       db.collection("chats").add({
         users: [user.email, input],
@@ -61,8 +65,8 @@ const Sidebar = () => {
       <SidebarButton onClick={createChat}>Start new chat</SidebarButton>
 
       {/* //TODO List of chats */}
-      {chatsSnapshot?.docs.map(chat => (
-          <Chat key={chat.id} id={chat.id} users={chat.data().users} />
+      {chatsSnapshot?.docs.map((chat) => (
+        <Chat key={chat.id} id={chat.id} users={chat.data().users} />
       ))}
     </Container>
   );
@@ -70,7 +74,21 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-const Container = styled.div``;
+const Container = styled.div`
+  flex: 0.45;
+  border-right: 1px solid whitesmoke;
+  height: 100vh;
+  min-width: 300px;
+  max-width: 350px;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+`;
 
 const Search = styled.div`
   display: flex;
